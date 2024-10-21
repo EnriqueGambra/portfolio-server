@@ -3,6 +3,8 @@ import { Octokit } from "@octokit/rest";
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 const octokit = new Octokit({
     auth: process.env.API_KEY,
 });
@@ -54,5 +56,6 @@ app.get("/getRepoData", async (req, res, next) => {
 
     res.json(response);
 
+    console.log('RESPONSE IS: ', response);
     return res;
 });
