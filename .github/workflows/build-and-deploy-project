@@ -1,0 +1,23 @@
+- name: Build and Deploy
+on: [push]
+jobs:
+  Create-Environment-Variable:
+    runs-on: ubuntu-latest
+    env:
+      SERVER_PORT: 3000
+      API_KEY: ${{ secrets.OCTOKIT_API_SECRET }}
+    steps: 
+      - run: |
+          touch .env
+          echo API_KEY="$API_KEY" >> .env
+          echo PORT="$SERVER_PORT" >> .env
+      
+          echo "cat .env"
+          cat .env
+      
+          echo "ls -a ."
+          ls -a .
+      
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}
+    shell: bash
