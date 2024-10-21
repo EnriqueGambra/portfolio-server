@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "portfolio-server",
+  "version": "1.0.0",
+  "description": "REST API consumer for my portfolio.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node -r dotenv/config ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "octokit": "^4.0.2"
+  }
+}
