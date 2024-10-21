@@ -1,4 +1,4 @@
-- name: Build and Deploy
+name: Build and Deploy
 on: [push]
 jobs:
   Create-Environment-Variable:
@@ -20,4 +20,3 @@ jobs:
       
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
-    shell: bash
