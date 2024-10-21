@@ -1,12 +1,18 @@
 name: Build and Deploy
 on: [push]
 jobs:
-  Create-Environment-Variable:
+  build:
     runs-on: ubuntu-latest
     env:
       SERVER_PORT: 3000
       API_KEY: ${{ secrets.OCTOKIT_API_SECRET }}
-    steps: 
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - run: echo "Running npm ci"
       - run: |
           touch .env
           echo API_KEY="$API_KEY" >> .env
@@ -20,18 +26,8 @@ jobs:
       
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-      - run: echo "Running npm ci"
       - run: npm ci
       - run: echo "Running ls -a"
       - run: ls -a
-      - run: echo "Runnnig cd .. then ls -a"
-      - run: cd .. ls -a
+      - run: echo "Running npm run dev"
       - run: npm run dev
