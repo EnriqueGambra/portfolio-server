@@ -18,10 +18,6 @@ app.listen(process.env.PORT, () => {
 
 app.use(cors());
 
-app.get('/getToken', (req, res, next) => {
-    return { 'token': process.env.API_KEY, 'port': process.env.PORT };
-})
-
 app.get("/getRepoData", async (req, res, next) => {
 
     let response = { }
