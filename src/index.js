@@ -18,15 +18,9 @@ app.listen(process.env.PORT, () => {
 
 app.use(cors());
 
-app.get('/getTokenData', async (req, res, next) => {
-    return res.json({ port: process.env.PORT, token: process.env.API_KEY })
-})
-
 app.get("/getRepoData", async (req, res, next) => {
 
     let response = { }
-
-    console.log('prceess env', process.env.API_KEY);
 
     const cpuSimulatorData = await octokit.request("GET /repos/enriquegambra/CPU_Simulator");
 
